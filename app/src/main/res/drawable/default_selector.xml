@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android = "http://schemas.android.com/apk/res/android">
+
+    <!--
+        1，默认的操作放在最后面item是从上往下匹配的，如果匹配到一个item那它就将采用这个item
+        ，而不是采用最佳匹配的规则；所以设置默认的状态，一定要写在最后，如果写在前面，则后面所有的item都不会起作用了
+
+
+    -->
+    <item android:state_pressed="true" android:drawable="@drawable/default_layerlist" />
+    <item android:state_selected="true" android:drawable="@drawable/default_layerlist" />
+    <item android:drawable="@drawable/ic_close"></item>
+</selector>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas. android.com/apk/res-auto"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    xmlns:app1 = "http://schemas.android.com/apk/res-auto"
+    android:orientation = "vertical"
+    tools:context = "name.dickie.android.demo.MainActivity"
+    >
+
+    <!--<name.dickie.android.demo.widget.MyTextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        app1:text ="wuxiaodong \nhello world"
+        android:paddingEnd="20dp"
+        android:background="@color/colorAccent"
+        />-->
+
+    <name.dickie.android.demo.widget.AutoLineLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        >
+        <Button
+            android:onClick="enterTouchTest"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="进入Touch测试界面"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="测试intent"
+            android:onClick="testIntent"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="enter A activity"
+            android:onClick="enterAActivity"
+            />
+
+
+    </name.dickie.android.demo.widget.AutoLineLayout>
+
+    <RelativeLayout
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        >
+
+    </RelativeLayout>
+
+
+    <!--<name.dickie.android.demo.widget.CircleImageView
+        android:layout_width = "match_parent"
+        android:layout_height = "0dp"
+        android:layout_weight="1"
+        android:src="@drawable/norway_swiden_border"
+        android:background="@color/colorPrimary"
+        />-->
+
+    <!--<name.dickie.android.demo.widget.GCircleImageView
+        android:layout_width = "match_parent"
+        android:layout_height = "0dp"
+        android:layout_weight="1"
+        android:src="@drawable/norway_swiden_border"
+        android:background="@color/colorPrimary"
+        />-->
+
+    <!--<ImageView
+        android:layout_width = "match_parent"
+        android:layout_height = "0dp"
+        android:layout_weight="1"
+        android:src="@drawable/norway_swiden_border"
+        android:background="@color/colorPrimary"
+        android:scaleType="centerCrop"
+        />-->
+
+
+    <!--<android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        >
+
+        <android.support.v4.view.PagerTabStrip
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            >
+
+        </android.support.v4.view.PagerTabStrip>
+    </android.support.v4.view.ViewPager>-->
+
+</LinearLayout>

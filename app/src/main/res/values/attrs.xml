@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name = "DogStyle">
+        <attr name = "sex" format="enum">
+            <enum  name="male" value="1"/>
+            <enum name="female" value="2"/>
+        </attr>
+
+        <attr name = "dogName" format="reference|string"/>
+        <attr name = "dogColor" format="reference|color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <!-- {@deprecated Use civ_circlebackground_color instead.} -->
+        <attr name="civ_fill_color" format="color" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name = "MyTextView">
+        <attr name = "text" format="string|reference"/>
+    </declare-styleable>
+</resources>

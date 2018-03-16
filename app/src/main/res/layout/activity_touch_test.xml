@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    tools:context = "name.dickie.android.demo.activity.TouchTestActivity"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:src="@drawable/ic_close"
+        />
+
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text="hello world"
+        android:drawableLeft="@drawable/ic_close"
+        />
+
+    <ImageView
+        android:layout_width = "50dp"
+        android:layout_height = "50dp"
+        android:src="@drawable/default_shape"
+        />
+
+    <Button
+        android:layout_width = "100dp"
+        android:layout_height = "100dp"
+        android:background="@drawable/default_selector"
+        />
+
+    <name.dickie.android.demo.widget.DragHandler
+        android:id="@+id/drag_test"
+        android:layout_centerInParent="true"
+        android:layout_width = "100dp"
+        android:layout_height = "100dp"
+        android:background="@color/colorAccent"
+        android:src="@drawable/liveness_head_left"
+        />
+
+    <name.dickie.android.demo.widget.MyViewPager
+        android:layout_below="@id/drag_test"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:layout_width = "match_parent"
+            android:layout_height = "200dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/liveness_head_left"
+            />
+        <ImageView
+            android:layout_width = "match_parent"
+            android:layout_height = "200dp"
+            android:src="@drawable/liveness_head_right"
+            android:scaleType="fitXY"
+            />
+        <ImageView
+            android:layout_width = "match_parent"
+            android:layout_height = "200dp"
+            android:src="@drawable/liveness_head_down"
+            android:scaleType="fitXY"
+            />
+        <ImageView
+            android:layout_width = "match_parent"
+            android:layout_height = "200dp"
+            android:src="@drawable/liveness_head_up"
+            android:scaleType="fitXY"
+            />
+
+    </name.dickie.android.demo.widget.MyViewPager>
+
+    <Button
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text="显示信息"
+        android:onClick="showInfomation"
+        android:background="#994e6cef"
+        />
+
+</LinearLayout>
