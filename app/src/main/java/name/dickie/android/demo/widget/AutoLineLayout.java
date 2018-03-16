@@ -62,6 +62,4 @@ public class AutoLineLayout extends ViewGroup {
             perRowWidth+=measuredWidth;
         }
     }
-
-
 }
