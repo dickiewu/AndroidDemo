@@ -44,7 +44,6 @@ public class DragHandler extends ImageView {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //Log.e("demo", event.toString());
-
         int action = event.getAction();
         switch (action){
             case MotionEvent.ACTION_DOWN:

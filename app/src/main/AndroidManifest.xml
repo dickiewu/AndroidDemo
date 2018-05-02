@@ -2,9 +2,16 @@
 <manifest xmlns:android = "http://schemas.android.com/apk/res/android"
           package = "name.dickie.android.demo">
 
+    <uses-permission android:name = "android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name = "android.permission.WAKE_LOCK" />
     <uses-permission android:name = "android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name = "android.permission.SET_WALLPAPER" />
     <uses-permission android:name = "android.permission.INTERNET" />
+    <uses-permission android:name = "android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name = "com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name = "android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
 
     <application
         android:name = ".DemoApplication"
@@ -14,12 +21,10 @@
         android:roundIcon = "@mipmap/ic_launcher_round"
         android:supportsRtl = "true"
         android:theme = "@style/AppTheme">
-        <activity
-            android:name = ".MainActivity"
-            android:icon = "@drawable/liveness_head_left"
-            >
+        <activity android:name = ".MainActivity">
             <intent-filter>
                 <action android:name = "android.intent.action.MAIN" />
+
                 <category android:name = "android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
@@ -41,15 +46,65 @@
                 <category android:name = "android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name = ".activity.AActivity">
-            <intent-filter>
-                <action android:name = "android.intent.action.MAIN" />
-                <category android:name = "android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name = ".activity.AActivity"
+            android:launchMode = "singleTask">
         </activity>
-        <activity android:name = ".activity.BActivity">
+        <activity
+            android:name = ".activity.BActivity"
+            android:launchMode = "singleTask">
         </activity>
         <activity android:name = ".activity.CActivity">
+        </activity>
+
+        <service
+            android:name = ".service.MusicService"
+            android:enabled = "true"
+            android:exported = "true">
+        </service>
+        <service
+            android:name = ".service.MusicService2"
+            android:enabled = "true"
+            android:exported = "true"
+            android:process = ":remote">
+            <intent-filter>
+                <action android:name = "name.dickiewu.remote_action" />
+            </intent-filter>
+        </service>
+
+        <activity android:name = ".activity.AnimationActivity">
+        </activity>
+        <activity
+            android:name = ".activity.DrawerActivity"
+            android:parentActivityName = ".MainActivity">
+        </activity>
+        <activity android:name = ".activity.AudioActivity">
+        </activity>
+
+        <receiver android:name = ".receiver.WifiReceiver">
+        </receiver>
+
+        <activity android:name = ".activity.RecyclerViewTestActivity">
+        </activity>
+        <activity android:name = ".activity.TestActivity">
+        </activity>
+
+        <receiver android:name = ".receiver.OtherReceiver">
+            <intent-filter>
+                <action android:name = "testlock" />
+                <action android:name = "runningtasks" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name = ".provider.MyContentProvider"
+            android:authorities = "name.dickiewu.music" />
+
+        <activity
+            android:name = ".activity.MyDialogActivity"
+            android:theme = "@style/Theme.AppCompat.Dialog">
+        </activity>
+        <activity android:name = ".activity.Test2Activity">
         </activity>
     </application>
 

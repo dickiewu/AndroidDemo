@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import name.dickie.android.demo.MainActivity;
 import name.dickie.android.demo.R;
 
 public class AActivity extends Activity {
@@ -36,10 +37,31 @@ public class AActivity extends Activity {
         Log.e("demo", "AActivity on New Intent");
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("demo", "AActivity onpause......");
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("demo", "AActivity onstop...");
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("demo", "AActivity ondestroy......");
+
+    }
+
     public void enterBActivity(View view) {
         Intent intent = new Intent();
         intent.setClass(getApplicationContext(),BActivity.class);
-        startActivity(intent);
+        MainActivity.activity.startActivity(intent);
     }
 
     public void launcheSelf(View view){

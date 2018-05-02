@@ -1,19 +1,85 @@
 <resources>
 
+
+    <style name="DemoButton" parent="android:Widget.Button">
+        <!--<item name="android:background">@drawable/btn_demo_background</item>-->
+        <item name="android:gravity">right</item>
+
+    </style>
+
+
     <!-- Base application theme. -->
     <style name = "AppTheme" parent = "Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name = "colorPrimary">@color/colorPrimary</item>
         <item name = "colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name = "colorAccent">@color/colorAccent</item>
-        <item name = "android:statusBarColor">?android:attr/colorMultiSelectHighlight</item>
 
-       <!-- <item name = "android:windowBackground">@android:color/transparent</item>
-        <item name = "android:colorBackgroundCacheHint">@null</item>
-        <item name = "android:windowShowWallpaper">true</item>
-        <item name = "android:windowNoTitle">true</item>-->
+        <item name = "android:statusBarColor">?android:attr/colorMultiSelectHighlight</item>
+        <item name="dogName">hello world in AppTheme</item>
+
+        <!--导入AutoLineLayout Style-->
+        <item name="autolineStyle">@style/theme_autoline_style</item>
+        <item name="tag">this is directly from  Apptheme</item>
+
+        <!--修改全局Button的 style-->
+        <!--<item name="android:buttonStyle">@style/DemoButton</item>-->
+
+        <!--修改系统activity 默认切换动画-->
+        <item name = "android:windowAnimationStyle">@style/DemoWindowAnimationStyle</item>
+    </style>
+
+    <!--定义activity切换的动画-->
+    <style name = "DemoWindowAnimationStyle">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+
+        <item name ="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
 
     </style>
+
+
+    <style name = "AppTheme2" parent = "android:Theme.Light">
+        <item name = "colorPrimary">@color/colorPrimary</item>
+        <item name = "colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name = "colorAccent">@color/colorAccent</item>
+<!--
+        <item name="android:windowNoTitle">true</item>
+-->
+    </style>
+
+    <style name = "ThemeHolo" parent = "android:Theme.Holo.Light">
+        <item name = "colorPrimary">@color/colorPrimary</item>
+        <item name = "colorPrimaryDark">@android:color/transparent</item>
+        <item name = "colorAccent">@color/colorAccent</item>
+
+        <item name = "android:actionBarStyle">@style/MyActionBarStyle</item>
+    </style>
+
+    <style name = "MyActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name = "android:background">@color/colorPrimaryDark</item>
+    </style>
+
+
+    <style name = "ToolbarTheme" parent = "Theme.AppCompat.Light.NoActionBar">
+        <item name = "colorPrimary">@color/colorPrimary</item>
+        <item name = "colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name = "colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="actionDropDownStyle">@style/dropDownStyle</item>
+
+    </style>
+
+    <style name = "dropDownStyle" parent="Widget.AppCompat.Spinner.DropDown.ActionBar">
+        <item name="android:dropDownVerticalOffset">40dip</item>
+    </style>
+
+
 
     <style name = "MyButton" parent = "Theme.AppCompat.Light">
         <item name = "colorControlHighlight">@color/colorPrimary</item>
@@ -26,4 +92,25 @@
         <item name = "dogColor">@color/colorAccent</item>
     </style>
 
+
+    <!--autoLine 的属性-->
+    <style name = "theme_autoline_style">
+        <item name="lineMinHeight">22</item>
+        <item name="maxPerLineNumber">22</item>
+        <item name="tag">this is default autoline style</item>
+    </style>
+
+    <style name = "custom_autoline_style">
+        <item name="tag">this tag is from custom autoline style</item>
+    </style>
+
+    <style name = "default_autoline_style">
+        <item name="tag">this style is the default style...</item>
+    </style>
+
+
+    <style name="dialog_window">
+        <item name = "android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name = "android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
 </resources>

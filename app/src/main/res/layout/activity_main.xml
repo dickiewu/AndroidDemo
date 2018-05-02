@@ -1,97 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
     xmlns:android = "http://schemas.android.com/apk/res/android"
-    xmlns:app = "http://schemas. android.com/apk/res-auto"
+    xmlns:app1 = "http://schemas.android.com/apk/res-auto"
     xmlns:tools = "http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width = "match_parent"
     android:layout_height = "match_parent"
-    xmlns:app1 = "http://schemas.android.com/apk/res-auto"
-    android:orientation = "vertical"
+    android:keepScreenOn = "true"
+    app1:srlEnableLoadMore = "false"
+    app1:srlEnableRefresh = "false"
     tools:context = "name.dickie.android.demo.MainActivity"
     >
 
-    <!--<name.dickie.android.demo.widget.MyTextView
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        app1:text ="wuxiaodong \nhello world"
-        android:paddingEnd="20dp"
-        android:background="@color/colorAccent"
-        />-->
-
-    <name.dickie.android.demo.widget.AutoLineLayout
+    <LinearLayout
         android:layout_width = "match_parent"
         android:layout_height = "match_parent"
+        android:orientation = "vertical"
         >
-        <Button
-            android:onClick="enterTouchTest"
-            android:layout_width = "wrap_content"
+        <name.dickie.android.demo.widget.AutoLineLayout
+            android:id = "@+id/autoLineLayout"
+            android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
-            android:text="进入Touch测试界面"
-            />
-
-        <Button
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text="测试intent"
-            android:onClick="testIntent"
-            />
-
-        <Button
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text="enter A activity"
-            android:onClick="enterAActivity"
-            />
-
-
-    </name.dickie.android.demo.widget.AutoLineLayout>
-
-    <RelativeLayout
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        >
-
-    </RelativeLayout>
-
-
-    <!--<name.dickie.android.demo.widget.CircleImageView
-        android:layout_width = "match_parent"
-        android:layout_height = "0dp"
-        android:layout_weight="1"
-        android:src="@drawable/norway_swiden_border"
-        android:background="@color/colorPrimary"
-        />-->
-
-    <!--<name.dickie.android.demo.widget.GCircleImageView
-        android:layout_width = "match_parent"
-        android:layout_height = "0dp"
-        android:layout_weight="1"
-        android:src="@drawable/norway_swiden_border"
-        android:background="@color/colorPrimary"
-        />-->
-
-    <!--<ImageView
-        android:layout_width = "match_parent"
-        android:layout_height = "0dp"
-        android:layout_weight="1"
-        android:src="@drawable/norway_swiden_border"
-        android:background="@color/colorPrimary"
-        android:scaleType="centerCrop"
-        />-->
-
-
-    <!--<android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        >
-
-        <android.support.v4.view.PagerTabStrip
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
+            android:background = "@drawable/border_bg"
             >
+            <!--
+             app1:tag="this tag from from layout"
+            style="@style/custom_autoline_style"
+-->
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "enterTouchTest"
+                android:text = "进入Touch测试界面"
+                />
 
-        </android.support.v4.view.PagerTabStrip>
-    </android.support.v4.view.ViewPager>-->
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:layout_marginLeft = "50dp"
+                android:onClick = "enterAnimationTest"
+                android:text = "进入动画测试界面"
+                />
 
-</LinearLayout>
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "testIntent"
+                android:text = "测试intent"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "enterAActivity"
+                android:text = "enter A activity"
+                />
+
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "testAnimation"
+                android:text = "测试动画"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "startService"
+                android:text = "startService"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "testService"
+                android:text = "测试service"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "bindService"
+                android:text = "bindService"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "unbindService"
+                android:text = "unbindService"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "enterDrawer"
+                android:text = "进入drawActivity"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "enterAudioActivity"
+                android:text = "进入AudioActivity"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "testAlarmManager"
+                android:text = "测试AlarmManager"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "testRecyclerView"
+                android:text = "测试RecyclerView"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text="测试"
+                android:onClick="enterTestActivity"
+                />
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text="测试2"
+                android:onClick="enterTest2"
+                />
+         </name.dickie.android.demo.widget.AutoLineLayout>
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:onClick = "dynamicAdd"
+            android:text = "动态增加"
+            />
+    </LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

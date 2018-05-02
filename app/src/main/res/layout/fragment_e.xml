@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+              android:orientation = "vertical"
+              android:layout_width = "match_parent"
+              android:layout_height = "match_parent">
+
+    <name.dickie.android.demo.widget.AutoLineLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        >
+
+        <Button
+            android:id="@+id/decodeBitmap"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="decodeBitmap"
+            />
+
+        <Button
+            android:id="@+id/testReuseBitmap"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="testReuseBitmap"
+            />
+
+        <Button
+            android:id="@+id/testJustbounds"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="testJustbounds"
+            />
+
+        <Button
+            android:id="@+id/testInsampleSize"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="testInsampleSize"
+            />
+
+        <Button
+            android:id="@+id/testGlide"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="测试glide"
+            />
+
+
+    </name.dickie.android.demo.widget.AutoLineLayout>
+
+    <ImageView
+        android:id="@+id/scenery"
+        android:layout_width = "match_parent"
+        android:layout_height = "300px"
+        android:src="@drawable/gif1"
+        android:scaleType="fitXY"
+        />
+
+</LinearLayout>

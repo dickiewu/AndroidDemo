@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+              android:orientation = "vertical"
+              android:layout_width = "match_parent"
+              android:layout_height = "match_parent"
+              android:background="?android:colorBackground"
+    >
+
+    <name.dickie.android.demo.widget.AutoLineLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        >
+        <Button
+            android:id="@+id/addToDFragment"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="addTo DFragment"
+            />
+
+        <Button
+            android:id="@+id/addNestedFragment"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="addNestedFragment"
+            />
+
+        <Button
+            android:id="@+id/enterBActivity"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="进入Bactivity"
+            />
+
+
+    </name.dickie.android.demo.widget.AutoLineLayout>
+
+    <FrameLayout
+        android:id="@+id/nestedFragmentContainer"
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        />
+
+</LinearLayout>

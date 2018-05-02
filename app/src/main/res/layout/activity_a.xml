@@ -5,6 +5,7 @@
     xmlns:tools = "http://schemas.android.com/tools"
     android:layout_width = "match_parent"
     android:layout_height = "match_parent"
+    android:orientation="vertical"
     tools:context = "name.dickie.android.demo.activity.AActivity"
     >
     <Button
@@ -19,5 +20,17 @@
         android:layout_height = "wrap_content"
         android:onClick="launcheSelf"
         android:text="launchSelf"
+        />
+
+    <View
+        android:layout_width = "100dp"
+        android:layout_height = "100dp"
+        android:background="@drawable/default_shape"
+        />
+
+    <name.dickie.android.demo.widget.ShineTextView
+        android:layout_width = "200dp"
+        android:layout_height = "100dp"
+        android:text="hellowro fasdfas fasdf asf"
         />
 </LinearLayout>

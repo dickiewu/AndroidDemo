@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name.dickie.android.demo.widget.HandleDrawerLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    tools:context = "name.dickie.android.demo.activity.DrawerActivity"
+    >
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        android:background="@android:color/holo_blue_light"
+        />
+
+    <LinearLayout
+        android:id="@+id/drawer_group"
+        android:layout_width = "wrap_content"
+        android:layout_height = "match_parent"
+        android:tag="drawerGroup"
+        android:orientation="horizontal"
+        >
+        <FrameLayout
+            android:id="@+id/drawer"
+            android:layout_width = "300dp"
+            android:layout_height = "match_parent"
+            android:background="@android:color/holo_orange_dark"
+            android:tag="drawer"
+            />
+        <TextView
+            android:id="@+id/handle"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="我是手柄"
+            android:ems="1"
+            android:layout_gravity="center_vertical"
+            android:tag="handle"
+            />
+    </LinearLayout>
+</name.dickie.android.demo.widget.HandleDrawerLayout>

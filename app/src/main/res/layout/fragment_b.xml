@@ -1,15 +1,16 @@
-<FrameLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
              xmlns:tools = "http://schemas.android.com/tools"
              android:layout_width = "match_parent"
              android:layout_height = "match_parent"
-             tools:context = "name.dickie.android.demo.BFragment"
+             tools:context = "name.dickie.android.demo.fragment.BFragment"
+              android:orientation="vertical"
     >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width = "match_parent"
-        android:layout_height = "match_parent"
-        android:text = "this is b Fragment"
+    <Button
+        android:id="@+id/showInfo"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text="显示信息"
         />
 
     <android.support.v7.widget.RecyclerView
@@ -20,4 +21,4 @@
 
     </android.support.v7.widget.RecyclerView>
 
-</FrameLayout>
+</LinearLayout>

@@ -4,8 +4,8 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "name.dickie.android.demo"
-        minSdkVersion 24
-        targetSdkVersion 26
+        minSdkVersion 16
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -28,6 +28,18 @@ android {
     }
 }
 
+configurations.all {
+    //循环一个个的依赖库
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        //获取当前循环到的依赖库
+        def requested = details.requested
+        //如果这个依赖库群组的名字是com.android.support
+        if (requested.group == 'com.android.support') {
+            details.useVersion '26.1.0'
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -38,7 +50,11 @@ dependencies {
     implementation 'com.android.support:support-dynamic-animation:26.1.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-2'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'//一个开源gif控件
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 
+    compile 'com.github.bumptech.glide:glide:4.6.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

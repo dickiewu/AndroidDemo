@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    android:orientation="vertical"
+    tools:context = "name.dickie.android.demo.activity.RecyclerViewTestActivity"
+    >
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        >
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="自动滚动"
+            android:onClick="autoScroll"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="删除第一个"
+            android:onClick="removeFirst"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="添加第一个"
+            android:onClick="addFirst"
+            />
+
+    </LinearLayout>
+
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_layout"
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleTest"
+            android:layout_width = "match_parent"
+            android:layout_height = "match_parent"
+            android:tag="recyclerview...."
+            android:background="@android:color/darker_gray"
+            />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

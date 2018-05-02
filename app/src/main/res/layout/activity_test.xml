@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    tools:context = "name.dickie.android.demo.activity.TestActivity"
+    android:orientation="vertical"
+    >
+
+    <name.dickie.android.demo.widget.AutoLineLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        >
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="打开dialog"
+            android:onClick="openDialog"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="打开dialogActivty"
+            android:onClick="openDialogActivity"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="开始blur"
+            android:onClick="testBlur"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="添加AudioFragment"
+            android:onClick="loadFragment"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="添加AFragment"
+            android:onClick="loadAFragment"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="删除AudioFragment"
+            android:onClick="removeAudioFragment"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="替换BFragment"
+            android:onClick="replaceAllFragment"
+            />
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="打开dialogFragment"
+            android:onClick="showDialogFragment"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="打开bottomSheetDialog"
+            android:onClick="showBottomSheetDialog"
+            />
+
+    </name.dickie.android.demo.widget.AutoLineLayout>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/blurView"
+        android:layout_width = "match_parent"
+        android:layout_height = "200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/norway_swiden_border"
+        />
+
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        android:orientation="vertical"
+        >
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width = "match_parent"
+            android:layout_height = "0dp"
+            android:layout_weight="1"
+            />
+
+        <FrameLayout
+            android:id="@+id/fragment_container2"
+            android:layout_width = "match_parent"
+            android:layout_height = "0dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+</LinearLayout>

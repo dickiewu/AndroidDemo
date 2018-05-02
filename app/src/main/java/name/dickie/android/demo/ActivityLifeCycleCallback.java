@@ -12,14 +12,18 @@ import java.security.NoSuchAlgorithmException;
  */
 
 public class ActivityLifeCycleCallback implements Application.ActivityLifecycleCallbacks {
+    private int activeCount;
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        Log.e("demo", "activity crated:"+activity.getClass().getName());
+
     }
 
     @Override
     public void onActivityStarted(Activity activity) {
-
+        activeCount++;
+        if(activeCount == 1){
+            //说明有一个Activity 进入前台
+        }
     }
 
     @Override
@@ -34,7 +38,10 @@ public class ActivityLifeCycleCallback implements Application.ActivityLifecycleC
 
     @Override
     public void onActivityStopped(Activity activity) {
-
+        activeCount--;
+        if(activeCount == 0){
+            //所有 activity都退出到幕后
+        }
     }
 
     @Override

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 
@@ -23,7 +25,8 @@ import name.dickie.android.demo.ContextHolder;
 public class MyViewPager extends ViewGroup {
 
     private Scroller scroller;
-    private int currentPage = 0;
+    private VelocityTracker velocityTracker;
+    private int currentPage;
 
     public MyViewPager(Context context) {
         super(context);
@@ -72,9 +75,14 @@ public class MyViewPager extends ViewGroup {
     private float lastDownY;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if(velocityTracker==null)
+            velocityTracker = VelocityTracker.obtain();
+        velocityTracker.addMovement(event);
         int action = event.getAction();
         switch (action){
             case MotionEvent.ACTION_DOWN:
+                if(!scroller.isFinished())
+                    scroller.abortAnimation();
                 lastDownX = event.getX();
                 lastDownY = event.getY();
                 break;
@@ -96,48 +104,48 @@ public class MyViewPager extends ViewGroup {
                 lastDownY = event.getY();
                 break;
             case MotionEvent.ACTION_UP:
-                /*int page = (int) (getScrollX()*1.0f/getPageWidth()+0.5);
-                Log.e("demo", "当前page："+page);
-                scrollTopage(page);*/
+                velocityTracker.computeCurrentVelocity(1000); // 单位 pix/second
+                float xVelocity = velocityTracker.getXVelocity();
+                int minimumFlingVelocity = ViewConfiguration.get(ContextHolder.getContext()).getScaledMaximumFlingVelocity()/4;
 
-                /*判断是在第几个page*/
-                int whichPage = (getScrollX() + getWidth() / 2 ) / getWidth() ;
-                Log.e("demo", "当前page:"+ whichPage);
-                scrollTopage(whichPage);
+
+                //要滚动到第几页
+                int whichPage = getCurrentPageNumber();
+                if(xVelocity>0){ // 向右滑
+                    if(xVelocity>minimumFlingVelocity){
+                        whichPage = whichPage-1<0?whichPage:whichPage-1;
+                        scrollTopage(whichPage);
+                    }else{
+                        scrollTopage(whichPage);
+                    }
+                }else{ //向左滑
+                    if(xVelocity<-minimumFlingVelocity){
+                        whichPage = whichPage == getChildCount()-1?whichPage:whichPage+1;
+                        scrollTopage(whichPage);
+                    }else{
+                        scrollTopage(whichPage);
+                    }
+                }
+                Log.e("demo", "xVelocity is :"+xVelocity+",mimun flingVelocity is:"+minimumFlingVelocity);
+                velocityTracker.recycle();
+                velocityTracker = null;
                 break;
         }
         return true;
     }
 
-    private void scrollTopage(int indexPage){
-        /*int dx = currentPage * getPageWidth() - getScrollX();
-        Log.e("demo", "the dx is:"+dx);
-        scroller.startScroll(getScrollX(),getScrollY(),dx,0);
-        invalidate();
-        currentPage = indexPage;*/
+    private void scrollTopage(int destationPage){
 
-        currentPage = indexPage;
-        if(currentPage > getChildCount() - 1){
-            currentPage = getChildCount() - 1;
+        if(destationPage > getChildCount() - 1){
+            destationPage = getChildCount() - 1;
         }
         //计算滑动到指定Page还需要滑动的距离
-        int dx = currentPage * getWidth() - getScrollX();
-        Log.e("demo", "dx is:"+dx);
+        int dx = destationPage * getWidth() - getScrollX();
         scroller.startScroll(getScrollX(),0,dx,0,Math.abs(dx) * 2);//动画时间设置为Math.abs(dx) * 2 ms
         //记住，使用Scroller类需要手动invalidate
         invalidate();
-
     }
 
-    private void scrollToNextPage(){
-        scroller.startScroll(getScrollX(), getScrollY(), -getPageWidth(), 0);
-        invalidate();
-    }
-
-    private void scrollToPrevPage(){
-        scroller.startScroll(getScrollX(), getScrollY(), getPageWidth(), 0);
-        invalidate();
-    }
 
     @Override
     public void computeScroll() {
@@ -146,16 +154,15 @@ public class MyViewPager extends ViewGroup {
             scrollTo(scroller.getCurrX(),scroller.getCurrY());
             invalidate();
         }else{
-
+            currentPage = getCurrentPageNumber();
         }
     }
 
+    /**计算静止时是第几page
+     * @return
+     */
     private int getCurrentPageNumber(){
-        //记住当前是第几个page
-        int scrollX = getScrollX();
-        float curPage = Math.abs(scrollX)*1.0f/getChildAt(0).getMeasuredWidth();
-        Log.e("demo", "curpage is "+curPage);
-        return (int)curPage;
+        return (int) (getScrollX()/getWidth()+0.5);
     }
 
     private int getPageWidth(){

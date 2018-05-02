@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "wrap_content"
+    android:background = "@android:color/darker_gray"
+    android:orientation = "vertical"
+    tools:context = "name.dickie.android.demo.activity.AudioActivity"
+    >
+
+    <name.dickie.android.demo.widget.AutoLineLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "200dp"
+        android:foreground="@color/colorAccent"
+        >
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "play"
+                android:text = "播放音乐"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "pause"
+                android:text = "暂停音乐"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "play2"
+                android:text = "播放音乐2"
+                />
+
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "playAlarm"
+                android:text = "播放闹钟"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "stopAlarm"
+                android:text = "停止闹钟"
+                />
+
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:onClick = "verify"
+                android:text = "验证"
+                />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:onClick = "getRingInfo"
+            android:text = "获取系统铃声"
+            />
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:onClick = "chooseRingtones"
+            android:text = "选择铃声"
+            />
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:onClick = "chooseAlarm"
+            android:text = "选择闹钟铃声"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="设置闹钟铃声"
+            android:onClick="setAlarm"
+            />
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="播放铃声"
+            android:onClick="playRingtone"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="初始化"
+            android:onClick="initOpenHelper"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="增加"
+            android:onClick="insert"
+            />
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="查询"
+            android:onClick="queryByContentProvider"
+            />
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text="contentProvider"
+            android:onClick="testContentProvider"
+            />
+
+    </name.dickie.android.demo.widget.AutoLineLayout>
+
+
+</LinearLayout>
