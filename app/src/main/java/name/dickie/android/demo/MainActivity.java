@@ -4,10 +4,13 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.WallpaperManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +19,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.annotation.NonNull;
+import android.text.format.Formatter;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -62,8 +66,17 @@ public class MainActivity extends Activity {
         activity = this;
         View main = findViewById(R.id.main);
 
+        Log.e(TAG, String.format("版本号:%s",android.os.Build.MODEL));
+        Log.e(TAG, String.format("手机厂商:%s", Build.BRAND));
 
 
+        WallpaperManager instance = WallpaperManager.getInstance(getApplicationContext());
+        int wallpaperId = instance.getWallpaperId(WallpaperManager.FLAG_SYSTEM);
+
+
+        BitmapDrawable drawable = (BitmapDrawable) instance.getDrawable();
+        Log.e(TAG, String.format("drawable is :%s,size:%s", drawable, Formatter.formatFileSize(getApplicationContext(),drawable.getBitmap().getByteCount())));
+        findViewById(android.R.id.content).setBackground(drawable);
 
         CouponDrawable couponDrawable = new CouponDrawable();
         couponDrawable.setCallback(new Drawable.Callback() {
@@ -282,5 +295,8 @@ public class MainActivity extends Activity {
         int height = mDisplay.getHeight();
         Log.d(TAG,"Screen Default Ratio: ["+width+"x"+height+"]");
         Log.d(TAG,"Screen mDisplay: "+mDisplay);
+
+
+
     }
 }

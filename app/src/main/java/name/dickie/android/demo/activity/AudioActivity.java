@@ -1,15 +1,18 @@
 package name.dickie.android.demo.activity;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -30,8 +33,6 @@ public class AudioActivity extends Activity {
     private static final String TAG = "WXD-DEMO";
     private MediaPlayer alarmPlayer;
     private AudioFocuHelper alarmFocus;
-    private ViewGroup inflateContainer;
-    private SeekBar seekBar;
     private MySqliteOpenHelper mMySqliteOpenHelper;
 
     @Override
@@ -41,30 +42,38 @@ public class AudioActivity extends Activity {
     }
 
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void play(View view) throws IOException {
         AudioFocuHelper audioFocuHelper = new AudioFocuHelper();
         audioFocuHelper.setFocusChangeListener(new AudioFocuHelper.OnAudioFocusChangeListener() {
             @Override
-            public void onFocusLoss() {
-                Log.e("demo", "music1 focus loss...");
-            }
-
-            @Override
             public void onFocusGain() {
                 Log.e("demo", "music1 focus gain...");
+                MyMediaPlayer.getInstance().start();
+            }
+            @Override
+            public void onFocusLoss() {
+                Log.e("demo", "music1 focus loss...");
+                MyMediaPlayer.getInstance().pause();
             }
 
             @Override
             public void onFocusLossTransient() {
                 Log.e("demo", "music1 focus loss transient...");
+                MyMediaPlayer.getInstance().pause();
             }
 
             @Override
             public void onFocusLossMayDuck() {
                 Log.e("demo", "music1 focus loss may duck......");
+                MyMediaPlayer.getInstance().pause();
             }
         });
-        int result = audioFocuHelper.requestAudioFocus(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_MEDIA)
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                .build();
+        int result = audioFocuHelper.requestAudioFocus(audioAttributes,AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
         switch (result) {
             case AudioManager.AUDIOFOCUS_REQUEST_FAILED:
                 Log.e("demo", "music request failed...");
@@ -99,32 +108,43 @@ public class AudioActivity extends Activity {
      *
      * @param view
      */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void playAlarm(View view) throws IOException {
         alarmFocus = new AudioFocuHelper();
         alarmFocus.setFocusChangeListener(new AudioFocuHelper.OnAudioFocusChangeListener() {
             @Override
-            public void onFocusLoss() {
-                Log.e("demo", "alarm  focus loss....");
+            public void onFocusGain() {
+                Log.e("demo", "alarm  focus gain....");
+                alarmPlayer.start();
             }
 
             @Override
-            public void onFocusGain() {
-                Log.e("demo", "alarm  focus gain....");
+            public void onFocusLoss() {
+                Log.e("demo", "alarm  focus loss....");
+                alarmPlayer.pause();
             }
 
             @Override
             public void onFocusLossTransient() {
                 Log.e("demo", "alarm  focus transient....");
+                alarmPlayer.pause();
 
             }
 
             @Override
             public void onFocusLossMayDuck() {
                 Log.e("demo", "alarm  focus may duck......");
+                alarmPlayer.pause();
 
             }
         });
-        int result = alarmFocus.requestAudioFocus();
+
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                .build();
+        //int result = alarmFocus.requestAudioFocus(audioAttributes,AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
+        int result = -2;
         switch (result) {
             case AudioManager.AUDIOFOCUS_REQUEST_FAILED:
                 Log.e("demo", "alarm request failed...");
@@ -159,18 +179,6 @@ public class AudioActivity extends Activity {
                 break;
         }
     }
-
-    public void verify(View view) {
-        View view1 = inflateContainer.findViewById(R.id.inflate_root);
-        int paddingBottom = view1.getPaddingBottom();
-        Log.e("wxd-demo", "padding left is:" + paddingBottom);
-        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view1.getLayoutParams();
-        Log.e("wxd-demo", "right margin:" + layoutParams.rightMargin);
-        int width = layoutParams.width;
-        int height = layoutParams.height;
-        Log.e("wxd-demo", "widht:" + width + ",height:" + height);
-    }
-
 
     public void getRingInfo(View view) {
         RingtoneManager ringtoneManager = new RingtoneManager(getApplicationContext());

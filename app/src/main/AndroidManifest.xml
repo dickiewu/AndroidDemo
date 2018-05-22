@@ -2,7 +2,7 @@
 <manifest xmlns:android = "http://schemas.android.com/apk/res/android"
           package = "name.dickie.android.demo">
 
-    <uses-permission android:name = "android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name = "android.permission.ACCESS_NETWORK_STATE" /><uses-permission android:name = "android.permission.ACCESS_WIFI_STATE" /><uses-permission android:name = "android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name = "android.permission.WAKE_LOCK" />
     <uses-permission android:name = "android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name = "android.permission.SET_WALLPAPER" />
@@ -11,6 +11,9 @@
     <uses-permission android:name = "com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name = "android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <!-- 记录logcat日志功能 所需的权限 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
 
     <application
@@ -48,11 +51,13 @@
         </activity>
         <activity
             android:name = ".activity.AActivity"
-            android:launchMode = "singleTask">
+            android:taskAffinity="name.dickie.newtask"
+            android:allowTaskReparenting="true"
+            >
         </activity>
         <activity
             android:name = ".activity.BActivity"
-            android:launchMode = "singleTask">
+        >
         </activity>
         <activity android:name = ".activity.CActivity">
         </activity>
@@ -82,6 +87,11 @@
         </activity>
 
         <receiver android:name = ".receiver.WifiReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+                <action android:name="android.net.wifi.STATE_CHANGE"/>
+            </intent-filter>
         </receiver>
 
         <activity android:name = ".activity.RecyclerViewTestActivity">
@@ -93,6 +103,7 @@
             <intent-filter>
                 <action android:name = "testlock" />
                 <action android:name = "runningtasks" />
+                <action android:name = "wifi" />
             </intent-filter>
         </receiver>
 

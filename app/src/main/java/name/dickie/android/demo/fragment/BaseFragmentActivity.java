@@ -63,6 +63,13 @@ public class BaseFragmentActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        Log.e(TAG, String.format("%s(%x) onNewIntent", className, this.hashCode()));
+        super.onNewIntent(intent);
+
+    }
+
+    @Override
     protected void onRestart() {
         Log.e(TAG, String.format("%s(%x) onRestart", className, this.hashCode()));
         super.onRestart();

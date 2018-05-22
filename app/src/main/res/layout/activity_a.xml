@@ -22,15 +22,35 @@
         android:text="launchSelf"
         />
 
-    <View
-        android:layout_width = "100dp"
-        android:layout_height = "100dp"
-        android:background="@drawable/default_shape"
+    <Button
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text="crash"
+        android:onClick="createCrash"
         />
 
-    <name.dickie.android.demo.widget.ShineTextView
-        android:layout_width = "200dp"
-        android:layout_height = "100dp"
-        android:text="hellowro fasdfas fasdf asf"
+    <Button
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text="changeText"
+        android:onClick="changeText"
         />
+
+    <FrameLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "400dp"
+        >
+        <View
+            android:layout_width = "200dp"
+            android:layout_height = "200dp"
+            android:elevation="30dp"
+            android:background="@android:color/holo_blue_bright"
+            />
+        <View
+            android:layout_width = "100dp"
+            android:layout_height = "100dp"
+            android:background="@android:color/holo_red_dark"
+            />
+
+    </FrameLayout>
 </LinearLayout>

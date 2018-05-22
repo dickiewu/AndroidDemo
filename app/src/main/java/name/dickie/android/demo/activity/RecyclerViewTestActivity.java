@@ -82,6 +82,7 @@ public class RecyclerViewTestActivity extends AppCompatActivity implements OnRef
         refreshLayout.setDisableContentWhenRefresh(true);//是否在刷新的时候禁止列表的操作
         refreshLayout.setEnableAutoLoadMore(false); //是否在列表滚动到底部时自动加载更多,默认为true,默认加载更多
         refreshLayout.setEnableLoadMore(true);  // 是否允许loadMore， 默认不可以
+
     }
 
     @TargetApi(Build.VERSION_CODES.N)

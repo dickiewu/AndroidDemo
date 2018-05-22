@@ -27,6 +27,8 @@
 
         <!--修改系统activity 默认切换动画-->
         <item name = "android:windowAnimationStyle">@style/DemoWindowAnimationStyle</item>
+
+
     </style>
 
     <!--定义activity切换的动画-->
@@ -40,13 +42,11 @@
     </style>
 
 
-    <style name = "AppTheme2" parent = "android:Theme.Light">
+    <style name = "AppTheme2" parent = "android:Theme.Wallpaper.NoTitleBar">
         <item name = "colorPrimary">@color/colorPrimary</item>
         <item name = "colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name = "colorAccent">@color/colorAccent</item>
-<!--
-        <item name="android:windowNoTitle">true</item>
--->
+
     </style>
 
     <style name = "ThemeHolo" parent = "android:Theme.Holo.Light">

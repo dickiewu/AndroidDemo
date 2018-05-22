@@ -2,9 +2,8 @@ package name.dickie.android.demo;
 
 import android.app.Application;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.util.Log;
 
+import me.ele.uetool.UETool;
 import name.dickie.android.demo.service.MusicService;
 
 /**
@@ -23,5 +22,6 @@ public class DemoApplication extends Application {
 
         Intent intent = new Intent();
         intent.setClass(getApplicationContext(), MusicService.class);
+        UETool.showUETMenu();
     }
 }

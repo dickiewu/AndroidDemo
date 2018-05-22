@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -12,9 +11,9 @@ import android.os.PowerManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.google.common.base.Strings;
-
 import java.util.List;
+
+import name.dickie.android.demo.utils.NetWorks;
 
 /**
  * Created by wuxiaodong on 18/4/10.
@@ -45,6 +44,8 @@ public class OtherReceiver extends BroadcastReceiver {
             for (ActivityManager.RunningTaskInfo runningTask : runningTasks) {
                 Log.e(TAG, String.format("num activities:%d, topActivity:%s,baseActivity:%s", runningTask.numActivities,runningTask.topActivity,runningTask.baseActivity));
             }
+        }else if(TextUtils.equals(action,"wifi")){
+            NetWorks.showInfo();
         }
     }
 

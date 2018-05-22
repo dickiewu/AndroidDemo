@@ -1,9 +1,11 @@
 package name.dickie.android.demo.utils;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
 import android.media.AudioManager;
+import android.os.Build;
 import android.util.Log;
 import name.dickie.android.demo.ContextHolder;
 
@@ -15,6 +17,7 @@ public class AudioFocuHelper implements AudioManager.OnAudioFocusChangeListener 
 
     private AudioManager audioManager;
     private AudioFocusRequest request;
+    private String TAG = "wxd";
 
     public AudioFocuHelper(){
         init();
@@ -24,15 +27,14 @@ public class AudioFocuHelper implements AudioManager.OnAudioFocusChangeListener 
         audioManager = (AudioManager) ContextHolder.getContext().getSystemService(Context.AUDIO_SERVICE);
     }
 
-    public int requestAudioFocus(){
-        AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_MEDIA)
-                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .build();
+    @TargetApi(Build.VERSION_CODES.O)
+    public int requestAudioFocus(AudioAttributes audioAttributes){
 
-        AudioFocusRequest.Builder builder = new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
+        AudioFocusRequest.Builder builder = new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
                 .setAudioAttributes(audioAttributes)
-                .setOnAudioFocusChangeListener(this);
+                .setAcceptsDelayedFocusGain(true) // 会让requestAudioFocus返回delayed
+                .setOnAudioFocusChangeListener(this)
+                ;
 
 
         request = builder.build();
@@ -40,15 +42,12 @@ public class AudioFocuHelper implements AudioManager.OnAudioFocusChangeListener 
         return result;
     }
 
-    public int requestAudioFocus(int hint){
-        AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_MEDIA)
-                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .build();
+    public int requestAudioFocus(AudioAttributes audioAttributes,int hint){
 
         AudioFocusRequest.Builder builder = new AudioFocusRequest.Builder(hint)
                 .setAudioAttributes(audioAttributes)
-                .setOnAudioFocusChangeListener(this);
+                .setOnAudioFocusChangeListener(this)
+                ;
         request = builder.build();
         int result = audioManager.requestAudioFocus(request);
         return result;
@@ -61,6 +60,7 @@ public class AudioFocuHelper implements AudioManager.OnAudioFocusChangeListener 
 
     @Override
     public void onAudioFocusChange(int focusChange) {
+        Log.e(TAG, String.format("focus chagne: %d",focusChange ));
         switch (focusChange) {
             case AudioManager.AUDIOFOCUS_GAIN:
                 focusChangeListener.onFocusGain();
@@ -86,8 +86,8 @@ public class AudioFocuHelper implements AudioManager.OnAudioFocusChangeListener 
     }
 
     public interface OnAudioFocusChangeListener {
-        void onFocusLoss();
         void onFocusGain();
+        void onFocusLoss();
         void onFocusLossTransient();
         void onFocusLossMayDuck();
     }

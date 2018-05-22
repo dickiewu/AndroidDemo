@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
@@ -119,7 +120,13 @@ public class AudioFragment extends BaseFragment {
                 Log.e("demo", "music1 focus loss may duck......");
             }
         });
-        int result = audioFocuHelper.requestAudioFocus(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
+
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_MEDIA)
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                .build();
+
+        int result = audioFocuHelper.requestAudioFocus(audioAttributes,AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
         switch (result) {
             case AudioManager.AUDIOFOCUS_REQUEST_FAILED:
                 Log.e("demo", "music request failed...");
@@ -180,7 +187,7 @@ public class AudioFragment extends BaseFragment {
 
             }
         });
-        int result = alarmFocus.requestAudioFocus();
+        int result = alarmFocus.requestAudioFocus(null);
         switch (result) {
             case AudioManager.AUDIOFOCUS_REQUEST_FAILED:
                 Log.e("demo", "alarm request failed...");
